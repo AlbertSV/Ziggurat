@@ -13,7 +13,10 @@ namespace Ziggurat
 
         private ZigguratControl _zigguratControl;
         private UnitControl _unitControl;
+        private ZigguratControl _zigguratTarget;
+        private UnitControl _unitTarget;
         private GameObject _hittedObject;
+        private GameObject _targetObject = null;
 
         private Camera _camera;
         private Ray _ray;
@@ -31,7 +34,6 @@ namespace Ziggurat
             TargetRay();
         }
 
-
         //looking for the object on mouse click
         private void TargetRay()
         {
@@ -41,6 +43,21 @@ namespace Ziggurat
 
                 if (Physics.Raycast(_ray, out RaycastHit hit))
                 {
+        
+
+                    if (FindObjectOfType<SelectedTarget>() != null)
+                    {
+                        _targetObject = FindObjectOfType<SelectedTarget>().gameObject.transform.parent.gameObject;
+
+                        if (_targetObject.GetComponent<ZigguratControl>() != null)
+                        {
+                            _zigguratTarget = _targetObject.GetComponent<ZigguratControl>();
+                        }
+                        if (_targetObject.GetComponent<UnitControl>() != null)
+                        {
+                            _unitTarget = _targetObject.GetComponent<UnitControl>();
+                        }
+                    }
 
                     _hittedObject = hit.collider.gameObject;
 
@@ -54,6 +71,7 @@ namespace Ziggurat
                         _unitControl = _hittedObject.GetComponent<UnitControl>();
                     }
 
+
                     //adding button and panel to the scene
                     if (EventSystem.current.currentSelectedGameObject != null)
                     {
@@ -61,7 +79,7 @@ namespace Ziggurat
                     }
                     else if (_hittedObject.GetComponent<Gate>() != null)
                     {
-                        DestroySelectedPoint(_hittedObject);
+                        DestroySelectedPoint(_targetObject);
                         
                         AddPointToTarget(_hittedObject, new Vector3(_hittedObject.transform.position.x, _hittedObject.transform.position.y + 9f,
                                 _hittedObject.transform.position.z), new Vector3(15f, 0.1f, 15f));
@@ -104,18 +122,23 @@ namespace Ziggurat
 
                 if (hitted.GetComponent<Button>() == null)
                 {
-                    if (_unitControl != null)
+                    if (_unitTarget != null)
                     {
-                        _unitControl.UnitOpenButton.SetActive(false);
+                        _unitTarget.UnitOpenButton.SetActive(false);
+                        _unitTarget.SetPanelColor().SetActive(false);
+                        _unitTarget.SetPanelColor().transform.localScale = new Vector3(0f, 0f, 0f);
+                        _isUnitPanelOpen = false;
                     }
-                    if (_zigguratControl != null)
+                    if (_zigguratTarget != null)
                     {
-                        _zigguratControl.ZigguratOpenButton.SetActive(false);
+                        _zigguratTarget.ZigguratOpenButton.SetActive(false);
+                        _zigguratTarget.SetPanelColor().SetActive(false);
+                        _zigguratTarget.SetPanelColor().transform.localScale = new Vector3(0f, 0f, 0f);
+                        _isZigPanelOpen = false;
                     }
                 }
             }
         }
-
 
         public void SetPanelColor()
         {

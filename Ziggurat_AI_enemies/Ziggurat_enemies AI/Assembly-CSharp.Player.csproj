@@ -56,11 +56,15 @@
     <Analyzer Include="/Applications/Visual Studio.app/Contents/MonoBundle/Addins/MonoDevelop.Unity/Analyzers/Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Scripts/BehaviourTree/Sequence.cs" />
+    <Compile Include="Assets/Scripts/UnitAI/TaskPatrol.cs" />
     <Compile Include="Assets/Scripts/Unit/UnitMoves.cs" />
+    <Compile Include="Assets/Scripts/BehaviourTree/Node.cs" />
     <Compile Include="Assets/Scripts/PlayerControl.cs" />
     <Compile Include="Assets/Scripts/GameManager.cs" />
     <Compile Include="Assets/Scripts/Unit/UnitControl.cs" />
     <Compile Include="Assets/Scripts/SelectedTarget.cs" />
+    <Compile Include="Assets/Scripts/UnitAI/UnitBT.cs" />
     <Compile Include="Assets/Scripts/ZigguratControl/Gate.cs" />
     <Compile Include="Assets/Scripts/Enums.cs" />
     <Compile Include="Assets/Scripts/Configuration.cs" />
@@ -77,8 +81,15 @@
     <Compile Include="Assets/Scripts/Extended.cs" />
     <Compile Include="Assets/Rotary Heart/SerializableDictionaryLite/SerializableDictionaryBase.cs" />
     <Compile Include="Assets/Rotary Heart/SerializableDictionaryLite/References/RequiredReferences.cs" />
+    <Compile Include="Assets/Scripts/BehaviourTree/Selector.cs" />
     <Compile Include="Assets/Scripts/Unit/UnitEnvironment.cs" />
+    <Compile Include="Assets/Scripts/BehaviourTree/Tree.cs" />
     <Compile Include="Assets/Scripts/Unit/Unit.cs" />
+    <Compile Include="Assets/Scripts/UnitAI/CheckEnemyInRange.cs" />
+    <Compile Include="Assets/Scripts/UnitAI/TaskGoToTarget.cs" />
+    <Compile Include="Assets/Scripts/UnitAI/CheckEnemyInAttackRange.cs" />
+    <Compile Include="Assets/Scripts/UnitAI/TaskAttack.cs" />
+    <Compile Include="Assets/Scripts/Unit/EnemyManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
@@ -87,9 +98,11 @@
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets/Scripts/Weights.xml" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" />
     <None Include="Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets/Scripts/Config.xml" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" />

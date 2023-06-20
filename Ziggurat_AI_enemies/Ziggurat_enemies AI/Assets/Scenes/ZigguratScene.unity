@@ -34697,7 +34697,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867097314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -38169,12 +38169,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70599fb8f53c347109778284fa8544d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitSpeed: 0.01
-  targetRange: 5
+  _unitSpeed: 0.03
+  _targetRange: 5
+  _FOVRange: 5
+  _attackRange: 1
+  _unitHealth: 50
+  _fastDamage: 10
   _redUnitPanel: {fileID: 1791175529}
   _blueUnitPanel: {fileID: 1152703232}
   _greenUnitPanel: {fileID: 1853838752}
   _unitButton: {fileID: 1546519815}
+  _onePoint: {fileID: 1867097315}
   _redZigguratPanel: {fileID: 1594333421}
   _greenZigguratPanel: {fileID: 159950973}
   _blueZigguratPanel: {fileID: 475351709}

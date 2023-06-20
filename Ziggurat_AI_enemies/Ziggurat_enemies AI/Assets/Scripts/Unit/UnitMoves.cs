@@ -20,8 +20,8 @@ namespace Ziggurat
 
         private void Update()
         {
-            UnitMove();
-            AnimationControl();
+            //UnitMove();
+            //AnimationControl();
         }
 
         private void AnimationControl()
@@ -38,11 +38,13 @@ namespace Ziggurat
 
         private void UnitMove()
         {
-            if (Mathf.Abs(unit.transform.position.x - target.x) >= GameManager.Manager.targetRange || Mathf.Abs(unit.transform.position.z - target.z) >= GameManager.Manager.targetRange)
-            {
-                unit.transform.position = Vector3.MoveTowards(unit.transform.position, target, GameManager.Manager.unitSpeed);
-            }
+            //if (Mathf.Abs(unit.transform.position.x - target.x) >= GameManager.Manager.targetRange || Mathf.Abs(unit.transform.position.z - target.z) >= GameManager.Manager.targetRange)
+            //{
+            //    unit.transform.position = Vector3.MoveTowards(unit.transform.position, target, GameManager.Manager.unitSpeed);
+            //}
 
         }
+
+       
     }
 }
