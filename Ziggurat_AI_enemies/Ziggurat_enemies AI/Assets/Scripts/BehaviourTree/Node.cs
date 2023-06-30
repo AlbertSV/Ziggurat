@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace BehaviourTree
 {
@@ -17,7 +18,6 @@ namespace BehaviourTree
         public Node _parent;
         protected List<Node> _children = new List<Node>();
 
-        private Dictionary<string, object> _dataContext = new Dictionary<string, object>();
              
         public Node()
         {
@@ -39,40 +39,44 @@ namespace BehaviourTree
 
         public virtual NodeState Evaluate() => NodeState.FAILURE;
 
-        public void SetData(string key, object value)
+        public void SetData(string key, object value, Dictionary<string, object> dataContext)
         {
-            _dataContext[key] = value;
+            dataContext[key] = value;
         }
 
-        public object GetData(string key)
+        public object GetData(string key,  Dictionary<string, object> dataContext)
         {
             object value = null;
-            if (_dataContext.TryGetValue(key, out value))
+            if (dataContext.TryGetValue(key, out value))
+            {
                 return value;
+            }
 
             Node node = _parent;
             while (node != null)
             {
-                value = node.GetData(key);
+                value = node.GetData(key,  dataContext);
                 if (value != null)
+                {
                     return value;
+                }
                 node = node._parent;
             }
             return null;
         }
 
-        public bool ClearData(string key)
+        public bool ClearData(string key, Dictionary<string, object> dataContext)
         {
-            if (_dataContext.ContainsKey(key))
+            if (dataContext.ContainsKey(key))
             {
-                _dataContext.Remove(key);
+                dataContext.Remove(key);
                 return true;
             }
 
             Node node = _parent;
             if (node != null)
             {
-                bool cleared = node.ClearData(key);
+                bool cleared = node.ClearData(key, dataContext);
                 if (cleared)
                     return true;
                 node = node._parent;

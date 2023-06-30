@@ -43928,7 +43928,7 @@ AnimationClip:
   m_Events:
   - time: 1
     functionName: AnimationEventEnd_UnityEditor
-    data: die
+    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

@@ -23,7 +23,7 @@ namespace Ziggurat
         private TeamColor teamColor;
 
         private float _timeSpawn = 5f;
-        private float _timeDelay = 5f;
+        private float _timeDelay = 10f;
         private bool _stopSpawing = false;
 
         public GameObject ZigguratOpenButton

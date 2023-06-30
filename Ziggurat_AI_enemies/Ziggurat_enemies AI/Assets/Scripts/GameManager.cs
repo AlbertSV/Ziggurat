@@ -18,8 +18,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject _greenUnitPanel;
     [SerializeField] public GameObject _unitButton;
     [SerializeField] public Transform _onePoint;
-    //[SerializeField] public Transform _twoPoint;
-    //[SerializeField] public Transform _threePoint;
 
     [SerializeField] public GameObject _redZigguratPanel;
     [SerializeField] public GameObject _greenZigguratPanel;

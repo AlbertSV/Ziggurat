@@ -9,17 +9,26 @@ namespace Ziggurat
     {
         private Transform _transform;
         private Animator _animator;
+        private Dictionary<string, object> _dataContext;
+        private EnemyManager _enemyManager;
 
-        public CheckEnemyInAttackRange(Transform transform)
+        public CheckEnemyInAttackRange(Transform transform, Dictionary<string, object> dataContext)
         {
             _transform = transform;
             _animator = transform.GetComponent<Animator>();
+            _dataContext = dataContext;
         }
 
         public override NodeState Evaluate()
         {
-            object target = GetData("target");
-            Debug.Log(target);
+            Debug.Log("attackrange" + _state);
+
+            if (_enemyManager == null)
+            {
+                _enemyManager = _transform.gameObject.GetComponent<EnemyManager>();
+            }
+
+            Transform target = (Transform)GetData("target", _dataContext);
             if (target == null)
             {
                 _state = NodeState.FAILURE;
@@ -30,9 +39,11 @@ namespace Ziggurat
 
             if(Vector3.Distance(_transform.position, targetTransform.position) <= GameManager.Manager._attackRange)
             {
-                Debug.Log(GetData("target"));
                 _animator.SetFloat("Movement", 0f);
-                _animator.SetTrigger("Fast");
+                //if(!_enemyManager.IsDead)
+                //{
+                //    _animator.SetTrigger("Fast");
+                //}
 
                 _state = NodeState.SUCCESS;
                 return _state;

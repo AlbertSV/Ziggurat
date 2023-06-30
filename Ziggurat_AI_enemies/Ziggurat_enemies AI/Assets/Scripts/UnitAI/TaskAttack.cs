@@ -9,43 +9,38 @@ namespace Ziggurat
     {
         private Transform _lastTarget;
         private EnemyManager _enemyManager;
-
+        private Dictionary<string, object> _dataContext;
         private Animator _animator;
+        private bool _isRunningToPoint;
 
-        private float _fastAttackTime = 1f;
-        private float _attackCounter = 0f;
-
-        public TaskAttack(Transform transform)
+        public TaskAttack(Transform transform, Dictionary<string, object> dataContext, bool isRunning)
         {
             _animator = transform.GetComponent<Animator>();
+            _dataContext = dataContext;
+            _isRunningToPoint = isRunning;
         }
 
         public override NodeState Evaluate()
         {
-            Transform target = (Transform)GetData("target");
-            Debug.Log(GetData("target"));
+            Debug.Log("attack" + _state);
+            Transform target = (Transform)GetData("target", _dataContext);
 
             if (target != _lastTarget)
             {
                 _enemyManager = target.GetComponent<EnemyManager>();
                 _lastTarget = target;
             }
-            _attackCounter += Time.deltaTime;
-            if(_attackCounter >= _fastAttackTime)
-            {
-                bool isEnemyDead = _enemyManager.TakeHit();
-                if(isEnemyDead)
-                {
-                    ClearData("target");
-                    _animator.SetTrigger("Fast");
-                    _animator.SetFloat("Movement", 1f);
-                }
-                else
-                {
-                    _attackCounter = 0f;
-                }
 
-                
+            _enemyManager.TakeHit();
+
+            if(_enemyManager.IsDead)
+            {
+                ClearData("target", _dataContext);
+
+                _state = NodeState.SUCCESS;
+
+                _isRunningToPoint = false;
+                return _state;
             }
 
             _state = NodeState.RUNNING;

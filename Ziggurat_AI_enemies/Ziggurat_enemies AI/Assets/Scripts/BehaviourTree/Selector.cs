@@ -14,7 +14,6 @@ namespace BehaviourTree
 
             foreach (Node node in _children)
             {
-                Debug.Log(_state);
                 switch (node.Evaluate())
                 {
                     case NodeState.FAILURE:

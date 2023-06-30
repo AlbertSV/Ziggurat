@@ -38169,7 +38169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70599fb8f53c347109778284fa8544d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unitSpeed: 0.03
+  _unitSpeed: 0.0503
   _targetRange: 5
   _FOVRange: 5
   _attackRange: 1
