@@ -17,7 +17,7 @@ namespace Ziggurat
         private List<GameObject> _redList;
         private List<GameObject> _blueList;
         private List<GameObject> _greenList;
-
+        private GameManager _gameManager;
         private GameObject _unit;
         private GameObject _zigguratPanel;
         private TeamColor teamColor;
@@ -49,6 +49,12 @@ namespace Ziggurat
         private void Start()
         {
             InvokeRepeating("UnitSpawn", _timeSpawn, _timeDelay);
+
+            if (_gameManager == null)
+            {
+                _gameManager = GameObject.FindObjectOfType<GameManager>();
+            }
+
         }
 
 
@@ -99,15 +105,15 @@ namespace Ziggurat
         {
             if (teamColor == TeamColor.Red)
             {
-                _zigguratPanel = GameManager.Manager._redZigguratPanel;
+                _zigguratPanel = _gameManager._redZigguratPanel;
             }
             else if (teamColor == TeamColor.Blue)
             {
-                _zigguratPanel = GameManager.Manager._blueZigguratPanel;
+                _zigguratPanel = _gameManager._blueZigguratPanel;
             }
             else
             {
-                _zigguratPanel = GameManager.Manager._greenZigguratPanel;
+                _zigguratPanel = _gameManager._greenZigguratPanel;
             }
 
             return _zigguratPanel;

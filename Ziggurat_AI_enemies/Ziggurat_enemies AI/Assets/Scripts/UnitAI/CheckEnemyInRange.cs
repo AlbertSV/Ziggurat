@@ -11,6 +11,7 @@ namespace Ziggurat
         private List<GameObject> _enemyList = new List<GameObject>();
         private Animator _animator;
         private Dictionary<string, object> _dataContext;
+        private GameManager _gameManager;
 
         public CheckEnemyInRange(Transform transform, Dictionary<string, object> dataContext)
         {
@@ -21,12 +22,16 @@ namespace Ziggurat
 
         public override NodeState Evaluate()
         {
-            Debug.Log("enemyrange" + _state);
-            Debug.Log(_children);
+            if (_gameManager == null)
+            {
+                _gameManager = GameObject.FindObjectOfType<GameManager>();
+            }
+
+
             object target = GetData("target", _dataContext);
             if(target == null)
             {
-                Collider[] colliders = Physics.OverlapSphere(_transform.position, GameManager.Manager._FOVRange);
+                Collider[] colliders = Physics.OverlapSphere(_transform.position, _gameManager.FOVRange);
 
 
                 if(colliders.Length > 0)

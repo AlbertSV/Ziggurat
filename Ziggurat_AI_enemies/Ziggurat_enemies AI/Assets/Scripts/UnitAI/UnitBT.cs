@@ -18,14 +18,14 @@ namespace Ziggurat
                 new Sequence(new List<Node>
                 {
                     new CheckEnemyInAttackRange(transform, _dataContext),
-                    new TaskAttack(transform, _dataContext, _isRunning),
+                    new TaskAttack(transform, _dataContext),
                 }),
                 new Sequence(new List<Node>
                 {
                     new CheckEnemyInRange(transform, _dataContext),
                     new TaskGoToTarget(transform, _dataContext, _isRunning),
                 }),
-                new TaskPatrol(this.transform, _isRunning),
+                new TaskPatrol(this.transform, transform.GetComponent<UnitControl>()),
             });
             return _root;
         }

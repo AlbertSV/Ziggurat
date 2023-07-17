@@ -2531,7 +2531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &159950974
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8065,7 +8065,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &475351710
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16877,6 +16877,7 @@ GameObject:
   - component: {fileID: 1010354914}
   - component: {fileID: 1010354915}
   - component: {fileID: 1010354916}
+  - component: {fileID: 1010354917}
   m_Layer: 0
   m_Name: Gate_Red
   m_TagString: Untagged
@@ -16954,6 +16955,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamColor: 0
+--- !u!114 &1010354917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010354910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6012a3793b53c4d11aa7d11eacf827c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _redUnitHealth: {fileID: 41848602}
+  _redFastAttack: {fileID: 1950849628}
+  _redStrongAttack: {fileID: 378066652}
+  _redUnitSpeed: {fileID: 358389481}
+  _redMissProbability: {fileID: 2078469692}
+  _redCriticalAttack: {fileID: 1136794877}
 --- !u!1 &1013508894
 GameObject:
   m_ObjectHideFlags: 0
@@ -29011,7 +29030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1594333422
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29590,6 +29609,7 @@ GameObject:
   - component: {fileID: 1617742201}
   - component: {fileID: 1617742202}
   - component: {fileID: 1617742203}
+  - component: {fileID: 1617742204}
   m_Layer: 0
   m_Name: Gate_Blue
   m_TagString: Untagged
@@ -29667,6 +29687,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamColor: 2
+--- !u!114 &1617742204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617742197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceec482351f3442e78005301bdf083d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blueUnitHealth: {fileID: 609625527}
+  _blueFastAttack: {fileID: 1579280264}
+  _blueStrongAttack: {fileID: 138097795}
+  _blueUnitSpeed: {fileID: 2111484131}
+  _blueMissProbability: {fileID: 369025672}
+  _blueCriticalAttack: {fileID: 1879454271}
 --- !u!1 &1622360652
 GameObject:
   m_ObjectHideFlags: 0
@@ -38133,8 +38171,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2019106756}
-  - component: {fileID: 2019106757}
   - component: {fileID: 2019106758}
+  - component: {fileID: 2019106759}
+  - component: {fileID: 2019106760}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -38157,32 +38196,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2019106757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019106754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70599fb8f53c347109778284fa8544d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _unitSpeed: 0.0503
-  _targetRange: 5
-  _FOVRange: 5
-  _attackRange: 1
-  _unitHealth: 50
-  _fastDamage: 10
-  _redUnitPanel: {fileID: 1791175529}
-  _blueUnitPanel: {fileID: 1152703232}
-  _greenUnitPanel: {fileID: 1853838752}
-  _unitButton: {fileID: 1546519815}
-  _onePoint: {fileID: 1867097315}
-  _redZigguratPanel: {fileID: 1594333421}
-  _greenZigguratPanel: {fileID: 159950973}
-  _blueZigguratPanel: {fileID: 475351709}
 --- !u!114 &2019106758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38196,6 +38209,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetPoint: {fileID: 8065323614098759860, guid: 59b6cc32299f54d7e849b0b854bbdb21, type: 3}
+--- !u!114 &2019106759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019106754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70599fb8f53c347109778284fa8544d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _redUnitPanel: {fileID: 1791175529}
+  _blueUnitPanel: {fileID: 1152703232}
+  _greenUnitPanel: {fileID: 1853838752}
+  _unitButton: {fileID: 1546519815}
+  _redZigguratPanel: {fileID: 1594333421}
+  _greenZigguratPanel: {fileID: 159950973}
+  _blueZigguratPanel: {fileID: 475351709}
+  _unitSpeed: 0.01
+  _targetRange: 5
+  _FOVRange: 5
+  _attackRange: 1
+  _unitHealth: 50
+  _fastDamage: 10
+  _strongDamage: 15
+  _missPtobability: 1
+  _criticalAttack: 1
+  _attackIncrease: 5
+  _healthIncrease: 10
+  _speedIncrease: 0.01
+  _missIncrease: 1
+  _criticalIncrease: 1
+--- !u!114 &2019106760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019106754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc56ea2c97c04c7a994eb89cfe2c5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2022843895
 GameObject:
   m_ObjectHideFlags: 0
@@ -39480,6 +39538,7 @@ GameObject:
   - component: {fileID: 2096191721}
   - component: {fileID: 2096191722}
   - component: {fileID: 2096191723}
+  - component: {fileID: 2096191724}
   m_Layer: 0
   m_Name: Gate_Green
   m_TagString: Untagged
@@ -39557,6 +39616,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamColor: 1
+--- !u!114 &2096191724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096191717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086822b7382714105b345f9e229556bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _greenUnitHealth: {fileID: 477241476}
+  _greenFastAttack: {fileID: 1373067408}
+  _greenStrongAttack: {fileID: 578172101}
+  _greenUnitSpeed: {fileID: 269436764}
+  _greenMissProbability: {fileID: 1384106932}
+  _greenCriticalAttack: {fileID: 1980842159}
 --- !u!1 &2096237359
 GameObject:
   m_ObjectHideFlags: 0

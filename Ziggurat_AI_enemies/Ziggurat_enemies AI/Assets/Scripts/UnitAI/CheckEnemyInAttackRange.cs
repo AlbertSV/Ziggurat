@@ -11,6 +11,7 @@ namespace Ziggurat
         private Animator _animator;
         private Dictionary<string, object> _dataContext;
         private EnemyManager _enemyManager;
+        private GameManager _gameManager;
 
         public CheckEnemyInAttackRange(Transform transform, Dictionary<string, object> dataContext)
         {
@@ -21,7 +22,10 @@ namespace Ziggurat
 
         public override NodeState Evaluate()
         {
-            Debug.Log("attackrange" + _state);
+            if (_gameManager == null)
+            {
+                _gameManager = GameObject.FindObjectOfType<GameManager>();
+            }
 
             if (_enemyManager == null)
             {
@@ -37,13 +41,9 @@ namespace Ziggurat
 
             Transform targetTransform = (Transform)target;
 
-            if(Vector3.Distance(_transform.position, targetTransform.position) <= GameManager.Manager._attackRange)
+            if(Vector3.Distance(_transform.position, targetTransform.position) <= _gameManager.AttackRange)
             {
                 _animator.SetFloat("Movement", 0f);
-                //if(!_enemyManager.IsDead)
-                //{
-                //    _animator.SetTrigger("Fast");
-                //}
 
                 _state = NodeState.SUCCESS;
                 return _state;

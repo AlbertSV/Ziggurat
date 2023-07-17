@@ -10,6 +10,7 @@ namespace Ziggurat
         private Transform _transform;
         private Dictionary<string, object> _dataContext;
         private bool _isRunningToPoint;
+        private GameManager _gameManager;
 
         public TaskGoToTarget(Transform transform, Dictionary<string, object> dataContext,bool isRunning)
         {
@@ -20,8 +21,13 @@ namespace Ziggurat
 
         public override NodeState Evaluate()
         {
-            Debug.Log("totarget" + _state);
             Transform target = (Transform)GetData("target", _dataContext);
+
+            if (_gameManager == null)
+            {
+                _gameManager = GameObject.FindObjectOfType<GameManager>();
+            }
+
 
             if (target == null)
             {
@@ -35,7 +41,7 @@ namespace Ziggurat
             {
                 if (Vector3.Distance(_transform.position, target.position) > 0.01f && Vector3.Distance(_transform.position, target.position) <= 2f)
                 {
-                    _transform.position = Vector3.MoveTowards(_transform.position, target.position, GameManager.Manager._unitSpeed);
+                    _transform.position = Vector3.MoveTowards(_transform.position, target.position, _gameManager.UnitSpeed);
                     _transform.LookAt(target.position);
                 }
                 else

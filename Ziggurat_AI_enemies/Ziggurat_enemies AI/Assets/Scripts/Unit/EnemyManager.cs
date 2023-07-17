@@ -7,52 +7,114 @@ namespace Ziggurat
 {
     public class EnemyManager : MonoBehaviour
     {
-        private float _unitHealthPoints;
-        private bool isSpawned = false;
         private Animator _animator;
+        private Animator _enemyAnimator;
         private bool _isDead = false;
-
-        private float _fastAttackTime = 1f;
-        private float _attackCounter = 2f;
+        private float actionTime = 3f;
+        private Dictionary<string, int> _chances;
+        private ActionToDo _actionToPerformUnit;
+        private ActionToDo _actionToPerformEnemy;
+        private Dropdown _dropdowns;
+        private float _fastDamage;
+        private float _strongDamage;
+        private bool _gotParameters = false;
 
         public bool IsDead
         {
-            get{ return _isDead; }
+            get { return _isDead; }
             set { _isDead = value; }
         }
-         
 
-        public bool TakeHit()
+        public bool GotParameters
         {
-            if (_animator ==null)
+            get { return _gotParameters; }
+            set { _gotParameters = value; }
+        }
+
+        public bool TakeHit(Animator unitAnimator)
+        {
+            if (_gotParameters == false)
             {
-                _animator = gameObject.GetComponent<Animator>();
+                if (unitAnimator.gameObject.GetComponent<GetColor>().GetTeamColor == TeamColor.Red)
+                {
+                    _fastDamage = unitAnimator.gameObject.GetComponent<RedTeamParameters>().RedParameters["FastDamage"];
+                    _strongDamage = unitAnimator.gameObject.GetComponent<RedTeamParameters>().RedParameters["StrongDamage"];
+                    _gotParameters = true;
+                }
+                else if (unitAnimator.gameObject.GetComponent<GetColor>().GetTeamColor == TeamColor.Blue)
+                {
+                    _fastDamage = unitAnimator.gameObject.GetComponent<BlueTeamParameters>().BlueParameters["FastDamage"];
+                    _strongDamage = unitAnimator.gameObject.GetComponent<BlueTeamParameters>().BlueParameters["StrongDamage"];
+                    _gotParameters = true;
+                }
+                else
+                {
+                    _fastDamage = unitAnimator.gameObject.GetComponent<GreenTeamParameters>().GreenParameters["FastDamage"];
+                    _strongDamage = unitAnimator.gameObject.GetComponent<GreenTeamParameters>().GreenParameters["StrongDamage"];
+                    _gotParameters = true;
+                }
             }
 
-            if (isSpawned == false)
+            GameObject unit = unitAnimator.gameObject;
+
+            if (_enemyAnimator == null)
             {
-                GetHealth();
-                isSpawned = true;
+                _enemyAnimator = gameObject.GetComponent<Animator>();
             }
 
-            _attackCounter += Time.deltaTime;
-            IsDead = _unitHealthPoints <= 0;
+            unitAnimator.gameObject.GetComponent<UnitControl>().AttackCounter += Time.deltaTime;
+
+            if (unitAnimator.gameObject.GetComponent<UnitControl>().AttackCounter >= actionTime)
+            {
+                if (unitAnimator != null)
+                {
+                    _actionToPerformUnit = new RandomBehaviour().ActionChose(unit.GetComponent<UnitControl>().Chances);
+                    _actionToPerformEnemy = new RandomBehaviour().ActionChose(gameObject.GetComponent<UnitControl>().Chances);
+
+                    if (_actionToPerformUnit == ActionToDo.FastAttack)
+                    {
+                        unitAnimator.SetTrigger("Fast");
+
+                        if(_actionToPerformEnemy != ActionToDo.Block)
+                        {
+                            gameObject.GetComponent<UnitControl>().Health -= _fastDamage;
+                        }
+                        else
+                        {
+                            gameObject.GetComponent<UnitControl>().Chances = new RatioChange().CalculateRation(ActionType.Block, gameObject.GetComponent<UnitControl>().Chances);
+                            Debug.Log("Enemy blocked attack");
+                        }
+                        unitAnimator.gameObject.GetComponent<UnitControl>().AttackCounter = 1f;
+
+                        unit.GetComponent<UnitControl>().Chances = new RatioChange().CalculateRation(ActionType.FastAttack, unit.GetComponent<UnitControl>().Chances);
+                        gameObject.GetComponent<UnitControl>().Chances = new RatioChange().CalculateRation(ActionType.FastHitted, gameObject.GetComponent<UnitControl>().Chances);
+                    }
+                    else if(_actionToPerformUnit == ActionToDo.StrongAttack)
+                    {
+                        unitAnimator.SetTrigger("Strong");
+
+                        if (_actionToPerformEnemy != ActionToDo.Block)
+                        {
+                            gameObject.GetComponent<UnitControl>().Health -= _strongDamage;
+                        }
+                        else
+                        {
+                            Debug.Log("Enemy blocked attack");
+                            gameObject.GetComponent<UnitControl>().Chances = new RatioChange().CalculateRation(ActionType.Block, gameObject.GetComponent<UnitControl>().Chances);
+                        }
+                        unitAnimator.gameObject.GetComponent<UnitControl>().AttackCounter = 0f;
+
+                        unit.GetComponent<UnitControl>().Chances = new RatioChange().CalculateRation(ActionType.StrongAttack, unit.GetComponent<UnitControl>().Chances);
+                        gameObject.GetComponent<UnitControl>().Chances = new RatioChange().CalculateRation(ActionType.StrongHitted, gameObject.GetComponent<UnitControl>().Chances);
+                    }
+                }
+            }
+
+            IsDead = gameObject.GetComponent<UnitControl>().Health <= 0;
 
             if(IsDead)
             {
                 _Die();
-            }
-
-            if (_attackCounter >= _fastAttackTime)
-            {
-                if (IsDead)
-                {
-                    _Die();
-                }
-                else
-                {
-                    _animator.SetTrigger("Fast");
-                }
             }
 
             return IsDead;
@@ -60,13 +122,8 @@ namespace Ziggurat
 
         private void _Die()
         {
-            _animator.SetFloat("Movement", 0f);
-            _animator.SetTrigger("Die");
-        }
-
-        private void GetHealth()
-        {
-            _unitHealthPoints = GameManager.Manager._unitHealth;
+            _enemyAnimator.SetFloat("Movement", 0f);
+            _enemyAnimator.SetTrigger("Die");
         }
 
         private void AnimationEventEnd_UnityEditor()
@@ -76,8 +133,8 @@ namespace Ziggurat
 
         private void AnimationEventAttackEnd()
         {
-            _unitHealthPoints -= GameManager.Manager._fastDamage;
-            _attackCounter = 0f;
+         
+            
         }
     }
 }
