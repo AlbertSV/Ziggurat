@@ -31,7 +31,6 @@ namespace Ziggurat
 
             _redDropList = new List<TMP_Dropdown>();
             _redParameters = new Dictionary<string, float>();
-            Debug.Log(_red.RedUnitHealthDrop);
 
             _redDropList = AddToList(_redDropList, _red.RedUnitHealthDrop, _red.RedFastDrop, _red.RedStrongDrop, _red.RedSpeedDrop, _red.RedMissDrop, _red.RedCriticalDrop);
             _redParameters = AddToList(_redParameters, _healthRed, _fastDamageRed, _strongDamageRed, _speedRed, _missRed, _criticalRed);

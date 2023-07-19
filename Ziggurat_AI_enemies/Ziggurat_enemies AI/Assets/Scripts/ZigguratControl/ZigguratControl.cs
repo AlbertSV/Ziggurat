@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Ziggurat
@@ -9,6 +10,9 @@ namespace Ziggurat
         
         [SerializeField] private Transform unitSpwanPosition;
         [SerializeField] private GameObject _zigguratOpenButton;
+
+        [SerializeField] private TMP_Text _spawnStatText;
+        [SerializeField] private TMP_Text _killsStatText;
 
         private Material _redMaterial;
         private Material _blueMaterial;
@@ -26,10 +30,18 @@ namespace Ziggurat
         private float _timeDelay = 10f;
         private bool _stopSpawing = false;
 
+        private int _spawnStatistic = 0;
+
         public GameObject ZigguratOpenButton
         {
             get { return _zigguratOpenButton; }
             set { _zigguratOpenButton = value; }
+        }
+
+        public int SpawnStatistic
+        {
+            get { return _spawnStatistic; }
+            set { _spawnStatistic = value; }
         }
 
         private void Awake()
@@ -55,6 +67,11 @@ namespace Ziggurat
                 _gameManager = GameObject.FindObjectOfType<GameManager>();
             }
 
+        }
+
+        private void Update()
+        {
+            UpdateStatistic();
         }
 
 
@@ -91,6 +108,7 @@ namespace Ziggurat
                
             var unitSpawn = Instantiate(unit, unitSpwanPosition.position, unitSpwanPosition.rotation, unitSpwanPosition);
             listColor.Add(unitSpawn);
+            SpawnStatistic += 1;
         }
 
         public void PanelButtonControl(GameObject hitted)
@@ -117,6 +135,42 @@ namespace Ziggurat
             }
 
             return _zigguratPanel;
+        }
+
+        private void UpdateStatistic()
+        {
+            _spawnStatText.text = "Spawned: " + SpawnStatistic;
+
+            if(gameObject.GetComponent<GetColor>().GetTeamColor == TeamColor.Red)
+            {
+                _killsStatText.text = "Killed: " + _gameManager.KillsStatisticRed;
+            }
+            else if (gameObject.GetComponent<GetColor>().GetTeamColor == TeamColor.Green)
+            {
+                _killsStatText.text = "Killed: " + _gameManager.KillsStatisticGreen;
+            }
+            else
+            {
+                _killsStatText.text = "Killed: " + _gameManager.KillsStatisticBlue;
+            }
+        }
+
+        public void ClearStatistic()
+        {
+            SpawnStatistic = 0;
+
+            if (gameObject.GetComponent<GetColor>().GetTeamColor == TeamColor.Red)
+            {
+                _gameManager.KillsStatisticRed = 0;
+            }
+            else if (gameObject.GetComponent<GetColor>().GetTeamColor == TeamColor.Green)
+            {
+                _gameManager.KillsStatisticGreen = 0;
+            }
+            else
+            {
+                _gameManager.KillsStatisticBlue = 0;
+            }
         }
     }
 }

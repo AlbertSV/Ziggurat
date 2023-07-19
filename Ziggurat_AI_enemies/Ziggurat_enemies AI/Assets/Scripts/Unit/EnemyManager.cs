@@ -18,6 +18,7 @@ namespace Ziggurat
         private float _fastDamage;
         private float _strongDamage;
         private bool _gotParameters = false;
+        private GameManager _gameManager;
 
         public bool IsDead
         {
@@ -33,38 +34,40 @@ namespace Ziggurat
 
         public bool TakeHit(Animator unitAnimator)
         {
+
+            GameObject unit = unitAnimator.gameObject;
+
             if (_gotParameters == false)
             {
-                if (unitAnimator.gameObject.GetComponent<GetColor>().GetTeamColor == TeamColor.Red)
+                if (unit.GetComponent<GetColor>().GetTeamColor == TeamColor.Red)
                 {
-                    _fastDamage = unitAnimator.gameObject.GetComponent<RedTeamParameters>().RedParameters["FastDamage"];
-                    _strongDamage = unitAnimator.gameObject.GetComponent<RedTeamParameters>().RedParameters["StrongDamage"];
+                    _fastDamage = unit.GetComponent<RedTeamParameters>().RedParameters["FastDamage"];
+                    _strongDamage = unit.GetComponent<RedTeamParameters>().RedParameters["StrongDamage"];
                     _gotParameters = true;
                 }
-                else if (unitAnimator.gameObject.GetComponent<GetColor>().GetTeamColor == TeamColor.Blue)
+                else if (unit.GetComponent<GetColor>().GetTeamColor == TeamColor.Blue)
                 {
-                    _fastDamage = unitAnimator.gameObject.GetComponent<BlueTeamParameters>().BlueParameters["FastDamage"];
-                    _strongDamage = unitAnimator.gameObject.GetComponent<BlueTeamParameters>().BlueParameters["StrongDamage"];
+                    _fastDamage = unit.GetComponent<BlueTeamParameters>().BlueParameters["FastDamage"];
+                    _strongDamage = unit.GetComponent<BlueTeamParameters>().BlueParameters["StrongDamage"];
                     _gotParameters = true;
                 }
                 else
                 {
-                    _fastDamage = unitAnimator.gameObject.GetComponent<GreenTeamParameters>().GreenParameters["FastDamage"];
-                    _strongDamage = unitAnimator.gameObject.GetComponent<GreenTeamParameters>().GreenParameters["StrongDamage"];
+                    _fastDamage = unit.GetComponent<GreenTeamParameters>().GreenParameters["FastDamage"];
+                    _strongDamage = unit.GetComponent<GreenTeamParameters>().GreenParameters["StrongDamage"];
                     _gotParameters = true;
                 }
             }
-
-            GameObject unit = unitAnimator.gameObject;
+           
 
             if (_enemyAnimator == null)
             {
                 _enemyAnimator = gameObject.GetComponent<Animator>();
             }
 
-            unitAnimator.gameObject.GetComponent<UnitControl>().AttackCounter += Time.deltaTime;
+            unit.GetComponent<UnitControl>().AttackCounter += Time.deltaTime;
 
-            if (unitAnimator.gameObject.GetComponent<UnitControl>().AttackCounter >= actionTime)
+            if (unit.GetComponent<UnitControl>().AttackCounter >= actionTime)
             {
                 if (unitAnimator != null)
                 {
@@ -78,13 +81,14 @@ namespace Ziggurat
                         if(_actionToPerformEnemy != ActionToDo.Block)
                         {
                             gameObject.GetComponent<UnitControl>().Health -= _fastDamage;
+                            UpdateKillsStatistic(unit);
                         }
                         else
                         {
                             gameObject.GetComponent<UnitControl>().Chances = new RatioChange().CalculateRation(ActionType.Block, gameObject.GetComponent<UnitControl>().Chances);
                             Debug.Log("Enemy blocked attack");
                         }
-                        unitAnimator.gameObject.GetComponent<UnitControl>().AttackCounter = 1f;
+                        unit.GetComponent<UnitControl>().AttackCounter = 1f;
 
                         unit.GetComponent<UnitControl>().Chances = new RatioChange().CalculateRation(ActionType.FastAttack, unit.GetComponent<UnitControl>().Chances);
                         gameObject.GetComponent<UnitControl>().Chances = new RatioChange().CalculateRation(ActionType.FastHitted, gameObject.GetComponent<UnitControl>().Chances);
@@ -96,13 +100,14 @@ namespace Ziggurat
                         if (_actionToPerformEnemy != ActionToDo.Block)
                         {
                             gameObject.GetComponent<UnitControl>().Health -= _strongDamage;
+                            UpdateKillsStatistic(unit);
                         }
                         else
                         {
                             Debug.Log("Enemy blocked attack");
                             gameObject.GetComponent<UnitControl>().Chances = new RatioChange().CalculateRation(ActionType.Block, gameObject.GetComponent<UnitControl>().Chances);
                         }
-                        unitAnimator.gameObject.GetComponent<UnitControl>().AttackCounter = 0f;
+                        unit.GetComponent<UnitControl>().AttackCounter = 0f;
 
                         unit.GetComponent<UnitControl>().Chances = new RatioChange().CalculateRation(ActionType.StrongAttack, unit.GetComponent<UnitControl>().Chances);
                         gameObject.GetComponent<UnitControl>().Chances = new RatioChange().CalculateRation(ActionType.StrongHitted, gameObject.GetComponent<UnitControl>().Chances);
@@ -135,6 +140,30 @@ namespace Ziggurat
         {
          
             
+        }
+
+        private void UpdateKillsStatistic(GameObject unitTeam)
+        {
+            if (_gameManager == null)
+            {
+                _gameManager = FindObjectOfType<GameManager>();
+            }
+
+            if (gameObject.GetComponent<UnitControl>().Health <= 0)
+            {
+                if (unitTeam.GetComponent<GetColor>().GetTeamColor == TeamColor.Red)
+                {
+                    _gameManager.KillsStatisticRed += 1;
+                }
+                else if (unitTeam.GetComponent<GetColor>().GetTeamColor == TeamColor.Blue)
+                {
+                    _gameManager.KillsStatisticBlue += 1;
+                }
+                else
+                {
+                    _gameManager.KillsStatisticGreen += 1;
+                }
+            }
         }
     }
 }

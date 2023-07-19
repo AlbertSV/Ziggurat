@@ -35,6 +35,10 @@ namespace Ziggurat
         [Tooltip("Unit miss probability increase with upgrade"), SerializeField, Range(0.5f, 5f)] private float _missIncrease = 1;
         [Tooltip("Unit critical attack increase with upgrade"), SerializeField, Range(0.5f, 5f)] private float _criticalIncrease = 1;
 
+        private int _killsStatisticRed;
+        private int _killsStatisticGreen;
+        private int _killsStatisticBlue;
+
 
         public float UnitSpeed
         {
@@ -118,6 +122,25 @@ namespace Ziggurat
         {
             get { return _criticalIncrease; }
             set { _criticalIncrease = value; }
+        }
+
+
+        public int KillsStatisticRed
+        {
+            get { return _killsStatisticRed; }
+            set { _killsStatisticRed = value; }
+        }
+
+        public int KillsStatisticGreen
+        {
+            get { return _killsStatisticGreen; }
+            set { _killsStatisticGreen = value; }
+        }
+
+        public int KillsStatisticBlue
+        {
+            get { return _killsStatisticBlue; }
+            set { _killsStatisticBlue = value; }
         }
     }
 }

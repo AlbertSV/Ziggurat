@@ -379,6 +379,7 @@
 "Assets/Scripts/Panels/GreenDropdowns.cs"
 "Assets/Scripts/Panels/PlayerPanel.cs"
 "Assets/Scripts/Panels/RedDropdowns.cs"
+"Assets/Scripts/Panels/UnitStatisticPanel.cs"
 "Assets/Scripts/Panels/ZigguratPanel.cs"
 "Assets/Scripts/Player.cs"
 "Assets/Scripts/PlayerControl.cs"

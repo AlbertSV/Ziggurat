@@ -63,16 +63,22 @@ namespace Ziggurat
             if (gameObject.GetComponent<GetColor>().GetTeamColor == TeamColor.Red)
             {
                 gameObject.GetComponent<RedTeamParameters>().SetParameters();
+                //RedTeamParameters _redParam = FindObjectOfType<RedTeamParameters>();
+                //_redParam.SetParameters();
                 Health = gameObject.GetComponent<RedTeamParameters>().RedParameters["Health"];
             }
             else if (gameObject.GetComponent<GetColor>().GetTeamColor == TeamColor.Blue)
             {
                 gameObject.GetComponent<BlueTeamParameters>().SetParameters();
+                //BlueTeamParameters _blueParam = FindObjectOfType<BlueTeamParameters>();
+                //_blueParam.SetParameters();
                 Health = gameObject.GetComponent<BlueTeamParameters>().BlueParameters["Health"];
             }
             else
             {
                 gameObject.GetComponent<GreenTeamParameters>().SetParameters();
+                //GreenTeamParameters _greenParam = FindObjectOfType<GreenTeamParameters>();
+                //_greenParam.SetParameters();
                 Health = gameObject.GetComponent<GreenTeamParameters>().GreenParameters["Health"];
             }
 
@@ -153,17 +159,15 @@ namespace Ziggurat
             if (gameObject.GetComponent<GetColor>().GetTeamColor == TeamColor.Red)
             {
                 gameObject.AddComponent<RedTeamParameters>();
-                //return _dropdowns;
+
             }
             else if (gameObject.GetComponent<GetColor>().GetTeamColor == TeamColor.Blue)
             {
                 gameObject.AddComponent<BlueTeamParameters>();
-                //return _dropdowns;
             }
             else
             {
                 gameObject.AddComponent<GreenTeamParameters>();
-               // return _dropdowns;
             }
         }
 

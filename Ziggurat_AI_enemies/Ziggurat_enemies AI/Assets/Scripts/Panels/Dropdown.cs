@@ -23,42 +23,6 @@ namespace Ziggurat
 
         private GameManager _gameManager;
 
-        public virtual float Speed
-        {
-            get { return _speed; }
-            set { }
-        }
-
-        public virtual float Health
-        {
-            get { return _health; }
-            set { }
-        }
-
-        public virtual float FastDamage
-        {
-            get { return _fastDamage; }
-            set { }
-        }
-
-        public virtual float StrongDamage
-        {
-            get { return _strongDamage; }
-            set { }
-        }
-
-        public virtual float Miss
-        {
-            get { return _miss; }
-            set { }
-        }
-
-        public virtual float Critical
-        {
-            get { return _critical; }
-            set { }
-        }
-
         private void Awake()
         {
 
@@ -72,7 +36,7 @@ namespace Ziggurat
             dropList.Add(unitHealth);
             dropList.Add(fastAttack);
             dropList.Add(strongAttack);
-            dropList.Add(unitHealth);
+            dropList.Add(unitSpeed);
             dropList.Add(missProbabilty);
             dropList.Add(criticalAttack);
 
@@ -94,6 +58,7 @@ namespace Ziggurat
         public Dictionary<string, float> ParameterUpgrade(List<TMP_Dropdown> dropList, TMP_Dropdown unitHealth, TMP_Dropdown fastAttack, TMP_Dropdown strongAttack,
             TMP_Dropdown unitSpeed, TMP_Dropdown missProbabilty, TMP_Dropdown criticalAttack, Dictionary<string, float> parametersDictionary)
         {
+
             foreach (TMP_Dropdown drop in dropList)
             {
                 if (drop.value == 0)
@@ -180,7 +145,6 @@ namespace Ziggurat
                 }
                
             }
-
             return parametersDictionary;
         }
     }  

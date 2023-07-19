@@ -24,42 +24,6 @@ namespace Ziggurat
             set { _blueParameters = value; }
         }
 
-        public override float Speed
-        {
-            get { return _speedBlue; }
-            set { _speedBlue = value; }
-        }
-
-        public override float Health
-        {
-            get { return _healthBlue; }
-            set { _healthBlue = value; }
-        }
-
-        public override float FastDamage
-        {
-            get { return _fastDamageBlue; }
-            set { _fastDamageBlue = value; }
-        }
-
-        public override float StrongDamage
-        {
-            get { return _strongDamageBlue; }
-            set { _strongDamageBlue = value; }
-        }
-
-        public override float Miss
-        {
-            get { return _missBlue; }
-            set { _missBlue = value; }
-        }
-
-        public override float Critical
-        {
-            get { return _criticalBlue; }
-            set { _criticalBlue = value; }
-        }
-
         public void SetParameters()
         {
             _blue = FindObjectOfType<BlueDropdowns>();
