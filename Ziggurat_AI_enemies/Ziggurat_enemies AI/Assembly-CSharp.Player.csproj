@@ -63,11 +63,13 @@
     <Compile Include="Assets/Scripts/PlayerControl.cs" />
     <Compile Include="Assets/Scripts/GameManager.cs" />
     <Compile Include="Assets/Scripts/Unit/UnitControl.cs" />
+    <Compile Include="Assets/Scripts/Unit/HealthBarManager.cs" />
     <Compile Include="Assets/Scripts/Unit/BlueTeamParameters.cs" />
     <Compile Include="Assets/Scripts/SelectedTarget.cs" />
     <Compile Include="Assets/Scripts/UnitAI/UnitBT.cs" />
     <Compile Include="Assets/Scripts/UnitAI/AttackBehaviour/RandomBehaviour.cs" />
     <Compile Include="Assets/Scripts/Unit/RedTeamParameters.cs" />
+    <Compile Include="Assets/Scripts/Panels/UnitStatisticPanel.cs" />
     <Compile Include="Assets/Scripts/ZigguratControl/Gate.cs" />
     <Compile Include="Assets/Scripts/Panels/BlueDropdowns.cs" />
     <Compile Include="Assets/Scripts/Unit/GreenTeamParameters.cs" />
@@ -98,7 +100,6 @@
     <Compile Include="Assets/Scripts/BehaviourTree/Tree.cs" />
     <Compile Include="Assets/Scripts/Extensions.cs" />
     <Compile Include="Assets/Scripts/Unit/Unit.cs" />
-    <Compile Include="Assets/Scripts/Panels/UnitStatisticPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

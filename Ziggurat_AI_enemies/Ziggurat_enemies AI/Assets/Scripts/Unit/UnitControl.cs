@@ -19,6 +19,7 @@ namespace Ziggurat
         private float _attackCounter = 2f;
         private GameManager _gameManager;
         private Dropdown _dropdowns;
+        private float _maxHealth;
 
 
         private Dictionary<string, int> _chances = new Dictionary<string, int>()
@@ -52,6 +53,12 @@ namespace Ziggurat
             set { _chances = value; }
         }
 
+        public float MaxHealth
+        {
+            get { return _maxHealth; }
+            set { _maxHealth = value; }
+        }
+
         private void Start()
         {
             GetTeamParameters();
@@ -63,22 +70,19 @@ namespace Ziggurat
             if (gameObject.GetComponent<GetColor>().GetTeamColor == TeamColor.Red)
             {
                 gameObject.GetComponent<RedTeamParameters>().SetParameters();
-                //RedTeamParameters _redParam = FindObjectOfType<RedTeamParameters>();
-                //_redParam.SetParameters();
+                MaxHealth = gameObject.GetComponent<RedTeamParameters>().RedParameters["Health"];
                 Health = gameObject.GetComponent<RedTeamParameters>().RedParameters["Health"];
             }
             else if (gameObject.GetComponent<GetColor>().GetTeamColor == TeamColor.Blue)
             {
                 gameObject.GetComponent<BlueTeamParameters>().SetParameters();
-                //BlueTeamParameters _blueParam = FindObjectOfType<BlueTeamParameters>();
-                //_blueParam.SetParameters();
+                MaxHealth = gameObject.GetComponent<BlueTeamParameters>().BlueParameters["Health"];
                 Health = gameObject.GetComponent<BlueTeamParameters>().BlueParameters["Health"];
             }
             else
             {
                 gameObject.GetComponent<GreenTeamParameters>().SetParameters();
-                //GreenTeamParameters _greenParam = FindObjectOfType<GreenTeamParameters>();
-                //_greenParam.SetParameters();
+                MaxHealth = gameObject.GetComponent<GreenTeamParameters>().GreenParameters["Health"];
                 Health = gameObject.GetComponent<GreenTeamParameters>().GreenParameters["Health"];
             }
 

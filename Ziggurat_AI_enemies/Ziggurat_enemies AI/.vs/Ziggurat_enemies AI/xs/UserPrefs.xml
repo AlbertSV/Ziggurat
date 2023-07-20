@@ -1,58 +1,51 @@
 ﻿<Properties StartupConfiguration="{863601B3-8D7A-DD29-6C69-D597FC019626}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GetColor.cs">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/albertsafin/github/Ziggurat/Ziggurat_AI_enemies/Ziggurat_enemies AI/Assets/Scripts/Panels/UnitPanel.cs" relfile="Assets/Scripts/Panels/UnitPanel.cs" line="34" column="1" />
+      <Breakpoint file="/Users/albertsafin/github/Ziggurat/Ziggurat_AI_enemies/Ziggurat_enemies AI/Assets/Scripts/Unit/BlueTeamParameters.cs" relfile="Assets/Scripts/Unit/BlueTeamParameters.cs" line="28" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c631bd43-3760-4030-be91-5ad170f33a84" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Unit/HealthBarManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/ZigguratControl/ZigguratControl.cs" Line="28" Column="1" />
+      <File FileName="Assets/Scripts/ZigguratControl/ZigguratControl.cs" Line="154" Column="48" />
       <File FileName="Assets/Scripts/Enums.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Configuration.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Unit/UnitControl.cs" />
-      <File FileName="Assets/Scripts/Player.cs" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="14" Column="102" />
+      <File FileName="Assets/Scripts/Player.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="143" Column="38" />
       <File FileName="Assets/Scripts/Panels/ZigguratPanel.cs" />
-      <File FileName="Assets/Scripts/TargetSelector.cs" />
-      <File FileName="Assets/Scripts/Panels/IPanel.cs" />
+      <File FileName="Assets/Scripts/TargetSelector.cs" Line="97" Column="1" />
       <File FileName="Assets/Scripts/GetColor.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Config.xml" />
-      <File FileName="Assets/Scripts/Unit/UnitMoves.cs" Line="25" Column="1" />
-      <File FileName="Assets/Scripts/BehaviourTree/Node.cs" Line="47" Column="10" />
-      <File FileName="Assets/Scripts/BehaviourTree/Tree.cs" Line="17" Column="1" />
-      <File FileName="Assets/Scripts/BehaviourTree/Sequence.cs" Line="18" Column="1" />
-      <File FileName="Assets/Scripts/BehaviourTree/Selector.cs" Line="34" Column="1" />
-      <File FileName="Assets/Scripts/UnitAI/TaskPatrol.cs" Line="29" Column="13" />
-      <File FileName="Assets/Scripts/UnitAI/UnitBT.cs" Line="10" Column="92" />
-      <File FileName="Assets/Scripts/UnitAI/CheckEnemyInRange.cs" Line="24" Column="34" />
-      <File FileName="Assets/Scripts/UnitAI/TaskGoToTarget.cs" Line="43" Column="35" />
-      <File FileName="Assets/Scripts/UnitAI/CheckEnemyInAttackRange.cs" Line="24" Column="35" />
-      <File FileName="Assets/Scripts/UnitAI/TaskAttack.cs" Line="37" Column="17" />
-      <File FileName="Assets/Scripts/Unit/EnemyManager.cs" Line="27" Column="29" />
-      <File FileName="Assets/Scripts/Extended.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Unit/UnitEnvironment.cs" Line="48" Column="46" />
+      <File FileName="Assets/Scripts/BehaviourTree/Node.cs" />
+      <File FileName="Assets/Scripts/BehaviourTree/Tree.cs" />
+      <File FileName="Assets/Scripts/BehaviourTree/Sequence.cs" />
+      <File FileName="Assets/Scripts/BehaviourTree/Selector.cs" />
+      <File FileName="Assets/Scripts/UnitAI/TaskPatrol.cs" />
+      <File FileName="Assets/Scripts/UnitAI/UnitBT.cs" />
+      <File FileName="Assets/Scripts/UnitAI/CheckEnemyInRange.cs" />
+      <File FileName="Assets/Scripts/UnitAI/TaskGoToTarget.cs" />
+      <File FileName="Assets/Scripts/UnitAI/CheckEnemyInAttackRange.cs" />
+      <File FileName="Assets/Scripts/UnitAI/TaskAttack.cs" Line="37" Column="14" />
+      <File FileName="Assets/Scripts/Unit/EnemyManager.cs" Line="103" Column="56" />
+      <File FileName="Assets/Scripts/Panels/UnitStatisticPanel.cs" Line="63" Column="78" />
+      <File FileName="Assets/Scripts/Unit/RedTeamParameters.cs" Line="30" Column="44" />
+      <File FileName="Assets/Scripts/Panels/Dropdown.cs" Line="88" Column="88" />
+      <File FileName="Assets/Scripts/Unit/BlueTeamParameters.cs" Line="26" Column="1" />
+      <File FileName="Assets/Scripts/Unit/GreenTeamParameters.cs" Line="26" Column="1" />
+      <File FileName="Assets/Scripts/Unit/UnitControl.cs" Line="170" Column="64" />
+      <File FileName="Assets/Scripts/Panels/RedDropdowns.cs" Line="35" Column="39" />
+      <File FileName="Assets/Scripts/Unit/HealthBarManager.cs" Line="21" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Ziggurat_enemies AI" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="BehaviourTree" expanded="True" />
-                <Node name="Panels" expanded="True" />
-                <Node name="Unit" expanded="True" />
-                <Node name="UnitAI" expanded="True" />
-                <Node name="ZigguratControl" expanded="True" />
-                <Node name="GetColor.cs" selected="True" />
-              </Node>
-            </Node>
-          </Node>
+          <Node name="Ziggurat_enemies AI" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/albertsafin/github/Ziggurat/Ziggurat_AI_enemies/Ziggurat_enemies AI/Assets/Scripts/Panels/UnitPanel.cs" relfile="Assets/Scripts/Panels/UnitPanel.cs" line="34" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="79a79691-9ee5-4ef1-a455-4a84de02019d" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
