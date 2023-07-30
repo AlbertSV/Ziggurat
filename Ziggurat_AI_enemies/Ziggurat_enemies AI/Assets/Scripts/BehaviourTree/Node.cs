@@ -18,11 +18,11 @@ namespace BehaviourTree
         public Node _parent;
         protected List<Node> _children = new List<Node>();
 
-             
         public Node()
         {
             _parent = null;
         }
+
         public Node(List<Node> children)
         {
             foreach (Node child in children)

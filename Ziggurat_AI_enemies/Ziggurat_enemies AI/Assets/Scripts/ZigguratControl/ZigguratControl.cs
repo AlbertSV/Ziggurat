@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,6 +14,7 @@ namespace Ziggurat
 
         [SerializeField] private TMP_Text _spawnStatText;
         [SerializeField] private TMP_Text _killsStatText;
+        [SerializeField] private TMP_Text _timeSpawnText;
 
         private Material _redMaterial;
         private Material _blueMaterial;
@@ -29,6 +31,8 @@ namespace Ziggurat
         private float _timeSpawn = 5f;
         private float _timeDelay = 10f;
         private bool _stopSpawing = false;
+        private bool _firstSpawn = true;
+        private float _counter = -1;
 
         private int _spawnStatistic = 0;
 
@@ -72,9 +76,10 @@ namespace Ziggurat
         private void Update()
         {
             UpdateStatistic();
+            TimeSpawning();
         }
 
-
+        //Spawn of the unit
         private void UnitSpawn()
         {
             if(teamColor == TeamColor.Red)
@@ -96,6 +101,7 @@ namespace Ziggurat
             }
         }
 
+        //set color of the unit
         private void SetUnit(Material color, GameObject unit, List<GameObject> listColor, TeamColor teamColor)
         {
             unit.GetComponentInChildren<MeshRenderer>().sharedMaterial = color;
@@ -111,6 +117,7 @@ namespace Ziggurat
             SpawnStatistic += 1;
         }
 
+        //control of the ziggurat panel
         public void PanelButtonControl(GameObject hitted)
         {
             if (hitted != null)
@@ -119,6 +126,7 @@ namespace Ziggurat
             }
         }
 
+        //set color of the ziggurat and unit panels
         public GameObject SetPanelColor()
         {
             if (teamColor == TeamColor.Red)
@@ -137,6 +145,7 @@ namespace Ziggurat
             return _zigguratPanel;
         }
 
+        //statistic of the spawns and kills of the team
         private void UpdateStatistic()
         {
             _spawnStatText.text = "Spawned: " + SpawnStatistic;
@@ -155,6 +164,7 @@ namespace Ziggurat
             }
         }
 
+        //clear button for statistic
         public void ClearStatistic()
         {
             SpawnStatistic = 0;
@@ -171,6 +181,28 @@ namespace Ziggurat
             {
                 _gameManager.KillsStatisticBlue = 0;
             }
+        }
+
+        //how many seconds left until unit spawn
+        private void TimeSpawning()
+        {
+            
+            if (_counter <= 0)
+            {
+                if (_firstSpawn == true)
+                {
+                    _counter = _timeSpawn;
+                    _firstSpawn = false;
+                }
+                else
+                {
+                    _counter = _timeDelay;
+                }
+            }
+
+            _counter -= Time.deltaTime;
+
+            _timeSpawnText.text = "Spawn in: " + Convert.ToUInt32(_counter);
         }
     }
 }

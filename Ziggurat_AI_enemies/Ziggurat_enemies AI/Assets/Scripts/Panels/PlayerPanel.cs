@@ -1,15 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Ziggurat
 {
     public class PlayerPanel : MonoBehaviour
     {
         [SerializeField] private GameObject _playerPanel;
+        [SerializeField] Toggle _healthBarToggle;
+
         private Animator _animator;
         private bool _isActive = false;
         private bool _barIsActive = true;
+        private List<GameObject> _allHealthBars = new List<GameObject>();
+        
+
+        public bool BarIsActive
+        {
+            get { return _barIsActive; }
+            set { _barIsActive = value; }
+        }
+
+        public Toggle HealthBarToggle
+        {
+            get { return _healthBarToggle; }
+            set { _healthBarToggle = value; }
+        }
 
         private void Start()
         {
@@ -45,24 +62,6 @@ namespace Ziggurat
             foreach(GameObject unit in _allUnits)
             {
                 Destroy(unit);
-            }
-        }
-
-        public void SwitchHealthBar()
-        {
-            GameObject[] _allHealthBars = GameObject.FindGameObjectsWithTag("HealthBar");
-            foreach(GameObject healthBar in _allHealthBars)
-            {
-                if (_barIsActive == true)
-                {
-                    healthBar.SetActive(false);
-                    _barIsActive = false;
-                }
-                else
-                {
-                    healthBar.SetActive(true);
-                    _barIsActive = true;
-                }
             }
         }
     }

@@ -6,5 +6,6 @@ namespace Ziggurat
 {
     public class Unit : MonoBehaviour
     {
+
     }
 }

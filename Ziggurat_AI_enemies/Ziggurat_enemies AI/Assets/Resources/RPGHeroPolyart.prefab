@@ -165,7 +165,6 @@ GameObject:
   - component: {fileID: 7136699916098465717}
   - component: {fileID: 6628116803734799329}
   - component: {fileID: 1649326342021134015}
-  - component: {fileID: 4468529517285371689}
   m_Layer: 0
   m_Name: HealthBar Canvas
   m_TagString: HealthBar
@@ -255,19 +254,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4468529517285371689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6626125032520456247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f10a0a263eb74540826d1ed2667f5fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthBarSprite: {fileID: 4203509917976389241}
 --- !u!1 &7972364701242182798
 GameObject:
   m_ObjectHideFlags: 0
@@ -2567,6 +2553,7 @@ GameObject:
   - component: {fileID: -5305953022952381090}
   - component: {fileID: -2809551860818416651}
   - component: {fileID: 217965664427145305}
+  - component: {fileID: 6744411570641006468}
   m_Layer: 0
   m_Name: RPGHeroPolyart
   m_TagString: Unit
@@ -2703,6 +2690,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e1e175055ac4a19a5f3669470b1ac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6744411570641006468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7973307358779964746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f10a0a263eb74540826d1ed2667f5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthBarSprite: {fileID: 4203509917976389241}
+  _healthBar: {fileID: 6626125032520456247}
 --- !u!1 &7973312293858233878
 GameObject:
   m_ObjectHideFlags: 0

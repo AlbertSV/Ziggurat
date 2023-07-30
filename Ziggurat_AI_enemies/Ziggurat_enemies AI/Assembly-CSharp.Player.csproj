@@ -77,7 +77,6 @@
     <Compile Include="Assets/Scripts/Panels/Dropdown.cs" />
     <Compile Include="Assets/Scripts/UnitAI/TaskAttack.cs" />
     <Compile Include="Assets/Scripts/UnitAI/AttackBehaviour/RatioChange.cs" />
-    <Compile Include="Assets/Scripts/Configuration.cs" />
     <Compile Include="Assets/Rotary Heart/SerializableDictionaryLite/DrawKeyAsPropertyAttribute.cs" />
     <Compile Include="Assets/Scripts/GetColor.cs" />
     <Compile Include="Assets/Scripts/Panels/ZigguratPanel.cs" />
@@ -92,7 +91,6 @@
     <Compile Include="Assets/Scripts/Panels/RedDropdowns.cs" />
     <Compile Include="Assets/Scripts/Panels/PlayerPanel.cs" />
     <Compile Include="Assets/Scripts/Player.cs" />
-    <Compile Include="Assets/Scripts/Extended.cs" />
     <Compile Include="Assets/Rotary Heart/SerializableDictionaryLite/SerializableDictionaryBase.cs" />
     <Compile Include="Assets/Rotary Heart/SerializableDictionaryLite/References/RequiredReferences.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Selector.cs" />

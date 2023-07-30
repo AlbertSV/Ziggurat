@@ -174,22 +174,5 @@ namespace Ziggurat
                 gameObject.AddComponent<GreenTeamParameters>();
             }
         }
-
-        //public void HealthImpactControl()
-        //{
-        //    if(_animator == null)
-        //    {
-        //        _animator = gameObject.GetComponent<Animator>();
-        //    }
-
-        //    //if(Health != _previousHealth)
-        //    //{
-        //    //    _previousHealth = Health;
-        //    //    //In case if there is Impact from attack
-        //    //    //_animator.SetTrigger("Impact");
-        //    //    AttackCounter = 0f;
-        //    //}
-        //}
-
     }
 }
